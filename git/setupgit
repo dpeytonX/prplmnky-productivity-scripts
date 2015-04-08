@@ -1,0 +1,33 @@
+#!/bin/bash
+
+###################
+# File Management #
+###################
+git config --global alias.s status
+git config --global alias.c commit
+
+###################
+# Branch          #
+###################
+
+git config --global alias.b branch
+git config --global alias.co checkout
+
+###################
+# Logging         #
+###################
+git config --global alias.l log
+git config --global alias.lno "log --name-only"
+
+###################
+# Functions       #
+###################
+function gitclone() {
+  git clone --quiet $2/${1}.git
+}
+
+function gitpullmaster() {
+  git stash --quiet
+  git co master --quiet
+  git pull origin master:master -f
+}
