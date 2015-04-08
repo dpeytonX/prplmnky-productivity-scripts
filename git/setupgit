@@ -12,6 +12,10 @@ git config --global alias.c commit
 
 git config --global alias.b branch
 git config --global alias.co checkout
+git config --global alias.nb "checkout -b"
+git config --global alias.db "branch -d"
+git config --global alias.Db "branch -D"
+git config --global alias.mb "branch -m"
 
 ###################
 # Logging         #
