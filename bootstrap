@@ -8,9 +8,9 @@ DIRNAME=$( cd "$( dirname "$Z" )" && pwd )
 MYVERSION=1
 
 cd $DIRNAME
-git stash
-git checkout master
-git pull origin master
+git stash |&>/dev/null
+git checkout master |&>/dev/null
+git pull origin master |&>/dev/null
 
 if [ -z $1 ]; then
   if [ -e "version.txt" ]; then
