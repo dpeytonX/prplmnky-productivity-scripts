@@ -1,7 +1,6 @@
 #!/bin/bash
 
 Z=${BASH_SOURCE[0]}
-echo "sourced $(basename $Z)"
 ########################
 # Grab latest version  #
 ########################
@@ -13,17 +12,12 @@ git stash
 git checkout master
 git pull origin master
 
-echo $1
-echo "-z" [ -z $1 ]
 if [ -z $1 ]; then
   if [ -e "version.txt" ]; then
-  echo "-e" [ -e "version.text" ] $(cat "version.txt")
     if [ $MYVERSION -gt $(cat "version.txt") ]; then
-      echo $(basename $Z) $MYVERSION
       . $(basename $Z) $MYVERSION
     fi
   else
-      echo "2" $(basename $Z) $MYVERSION
     . $(basename $Z) $MYVERSION
   fi
 fi
