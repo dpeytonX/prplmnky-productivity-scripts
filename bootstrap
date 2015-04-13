@@ -6,20 +6,22 @@
 DIRNAME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 MYVERSION=1
 
-pushd $DIRNAME
+cd $DIRNAME
 git stash
 git checkout master
 git pull origin master
 
-if [ -e "version.txt" && -z $1 ]; then
-  if [ $MYVERSION -lt $(cat "version.txt") ]; then
+if [ -z $1 ]; then
+  if [ -e "version.txt"]; then
+    if [ $MYVERSION -lt $(cat "version.txt") ]; then
+      . $(basename $0) $MYVERSION
+    fi
+  else
     . $(basename $0) $MYVERSION
   fi
-else
-  . $(basename $0) $MYVERSION
 fi
 
-. bash/setupalias
+. bash/setupaliases
 . git/setupgit
 
-popd
+cd -
