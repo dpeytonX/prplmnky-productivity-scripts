@@ -13,8 +13,9 @@ git checkout master
 git pull origin master
 
 echo $1
+echo "-z" [ -z $1 ]
 if [ -z $1 ]; then
-  echo "-e" [-e "version.text" ]
+  echo "-e" [ -e "version.text" ]
   if [ -e "version.txt" ]; then
     if [ $MYVERSION -lt $(cat "version.txt") ]; then
       echo $(basename $0) $MYVERSION
