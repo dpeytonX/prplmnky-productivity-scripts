@@ -6,7 +6,7 @@
 DIRNAME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 MYVERSION=1
 
-cd $DIRNAME
+pushd $DIRNAME
 git stash
 git checkout master
 git pull origin master
@@ -19,7 +19,7 @@ else
   . $(basename $0) $MYVERSION
 fi
 
-cd -
-
 . bash/setupalias
 . git/setupgit
+
+popd
