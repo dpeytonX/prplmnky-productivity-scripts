@@ -1,11 +1,11 @@
 #!/bin/bash
 
-0=${BASH_SOURCE[0]}
-echo "sourced $(basename $0)"
+Z=${BASH_SOURCE[0]}
+echo "sourced $(basename $Z)"
 ########################
 # Grab latest version  #
 ########################
-DIRNAME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIRNAME=$( cd "$( dirname "$Z" )" && pwd )
 MYVERSION=1
 
 cd $DIRNAME
@@ -19,12 +19,12 @@ if [ -z $1 ]; then
   if [ -e "version.txt" ]; then
   echo "-e" [ -e "version.text" ] $(cat "version.txt")
     if [ $MYVERSION -gt $(cat "version.txt") ]; then
-      echo $(basename $0) $MYVERSION
-      . $(basename $0) $MYVERSION
+      echo $(basename $Z) $MYVERSION
+      . $(basename $Z) $MYVERSION
     fi
   else
-      echo "2" $(basename $0) $MYVERSION
-    . $(basename $0) $MYVERSION
+      echo "2" $(basename $Z) $MYVERSION
+    . $(basename $Z) $MYVERSION
   fi
 fi
 
