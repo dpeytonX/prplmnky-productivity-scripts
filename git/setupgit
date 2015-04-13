@@ -5,7 +5,9 @@
 ###################
 git config --global alias.s status
 git config --global alias.c commit
+git config --global alias.a "add --all"
 git config --global alias.po "push origin"
+git config --global alias.go "pull origin"
 git config --global alias.fo "fetch origin"
 
 ###################
@@ -18,6 +20,13 @@ git config --global alias.nb "checkout -b"
 git config --global alias.db "branch -d"
 git config --global alias.Db "branch -D"
 git config --global alias.mb "branch -m"
+
+
+###################
+# Code            #
+###################
+git config --global alias.d "diff"
+git config --global alias.dH "diff HEAD^1"
 
 ###################
 # Logging         #
