@@ -11,12 +11,15 @@ git stash
 git checkout master
 git pull origin master
 
+echo $1
 if [ -z $1 ]; then
   if [ -e "version.txt"]; then
     if [ $MYVERSION -lt $(cat "version.txt") ]; then
+      echo $(basename $0) $MYVERSION
       . $(basename $0) $MYVERSION
     fi
   else
+      echo "2" $(basename $0) $MYVERSION
     . $(basename $0) $MYVERSION
   fi
 fi
