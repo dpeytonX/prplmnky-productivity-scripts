@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "sourced $(basename $0)"
 ########################
 # Grab latest version  #
 ########################
@@ -27,4 +28,4 @@ fi
 . bash/setupaliases
 . git/setupgit
 
-cd -
+cd $OLDPWD
