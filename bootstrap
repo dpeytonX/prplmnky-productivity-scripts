@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "sourced $(basename ${BASH_SOURCE[0]})"
+$0=${BASH_SOURCE[0]}
+echo "sourced $(basename $0)"
 ########################
 # Grab latest version  #
 ########################
