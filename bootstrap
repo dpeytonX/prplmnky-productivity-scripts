@@ -1,0 +1,25 @@
+#!/bin/bash
+
+########################
+# Grab latest version  #
+########################
+DIRNAME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+MYVERSION=1
+
+cd $DIRNAME
+git stash
+git checkout master
+git pull origin master
+
+if [ -e "version.txt" && -z $1 ]; then
+  if [ $MYVERSION -lt $(cat "version.txt") ]; then
+    . $(basename $0) $MYVERSION
+  fi
+else
+  . $(basename $0) $MYVERSION
+fi
+
+cd -
+
+. bash/setupalias
+. git/setupgit

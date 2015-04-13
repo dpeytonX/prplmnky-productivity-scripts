@@ -1,26 +1,6 @@
 #!/bin/bash
 
 
-########################
-# Grab latest version  #
-########################
-DIRNAME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-MYVERSION=1
-
-cd $DIRNAME/..
-git stash
-git checkout master
-git pull origin master
-
-if [ -e "version.txt" ]; then
-  if [ $MYVERSION -lt $(cat "version.txt") ]; then
-    . bash/$(basename $0)
-  fi
-else
-  . bash/$(basename $0)
-fi
-
-cd -
 
 ############
 # Aliases  #
