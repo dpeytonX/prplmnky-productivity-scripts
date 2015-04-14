@@ -2,6 +2,7 @@
 
 
 alias s=sudo
+alias REBOOT="s reboot"
 
 #############
 # Package   #
@@ -22,3 +23,4 @@ alias baptp="s apt-build update; s apt-build remove --purge"
 #############
 alias se="s -e"
 alias svim="s vim"
+alias VIM=svim
