@@ -16,10 +16,9 @@ fetch=$(git diff --name-only origin/master)
 if [ -n "$fetch" ]; then
   git pull origin master #|&>/dev/null
   . $(basename $Z) $MYVERSION
-  exit
+else
+  . bash/setupaliases
+  . git/setupgit
 fi
-
-. bash/setupaliases
-. git/setupgit
 
 cd $OLDPWD
