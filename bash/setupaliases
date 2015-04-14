@@ -11,10 +11,12 @@ alias aptup="s apt-get update; s apt-get upgrade"
 alias aptdup="s apt-get update; s apt-get dist-upgrade"
 alias aptrm="s apt-get update; s apt-get remove"
 alias aptp="s apt-get update; s apt-get remove --purge"
+alias apts="s apt-get update; s apt-cache search"
 alias baptup="s apt-build update; s apt-build upgrade"
 alias baptdup="s apt-build update; s apt-build dist-upgrade"
 alias baptrm="s apt-build update; s apt-build remove"
 alias baptp="s apt-build update; s apt-build remove --purge"
+alias bapts="s apt-build update; s apt-build search"
 
 
 #############
