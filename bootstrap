@@ -6,7 +6,7 @@ Z=${BASH_SOURCE[0]}
 ########################
 DIRNAME=$( cd "$( dirname "$Z" )" && pwd )
 MYVERSION=2
-
+     
 cd $DIRNAME
 git stash #|&>/dev/null
 git checkout master #|&>/dev/null
