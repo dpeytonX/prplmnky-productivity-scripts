@@ -12,7 +12,8 @@ git stash #|&>/dev/null
 git checkout master #|&>/dev/null
 git fetch origin master #|&>/dev/null
 
-if [ -n $(git diff --name-only origin/master) ]; then
+fetch=$(git diff --name-only origin/master)
+if [ -n "$fetch" ]; then
   git pull origin master #|&>/dev/null
   . $(basename $Z) $MYVERSION
   exit
