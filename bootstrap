@@ -8,7 +8,7 @@ Z=${BASH_SOURCE[0]}
 DIRNAME=$( builtin cd "$( dirname "$Z" )" && pwd )
 MYVERSION=2
      
-cd $DIRNAME
+pushd $DIRNAME &>/dev/null
 git stash &>/dev/null
 git checkout master &>/dev/null
 git fetch origin master &>/dev/null
@@ -24,4 +24,5 @@ else
   . git/setupgit
 #fi
 
-cd $OLDPWD
+popd $OLDPWD &>/dev/null
+
