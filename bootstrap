@@ -20,7 +20,7 @@ if [ -n "$fetch" ]; then
 else
   . bash/setupaliases
   . bash/mycd
-  export -f cd
+  export -f prplmnky_cd
   . git/setupgit
 fi
 

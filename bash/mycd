@@ -3,27 +3,47 @@
 #overwrite cd so that it recusively search the directories below until a
 #match occurs.
 
-function cd {
-  builtin cd $* &>/dev/null
-  v="$?"
-  #echo "orig $*"
-  if [ $v -gt 0 ]; then
-    #echo 'non-zero status'
-    matches=($(find . -maxdepth 10 -name "${@:$#:1}" -type d 2>/dev/null))
-
-    #echo "found matches $matches"
-    #echo executing "cd ${@:0:$#-1} ${matches[0]}"
-    if [ -n "${matches[0]}" ]; then
-      builtin cd ${@:1:$#-1} ${matches[0]} &>/dev/null
-      v="$?"
+function prplmnky_cd {
+  if [ -z "$(declare -f prplmnky_old_cd)" ]; then
+    if [ -n "$(declare -f cd)" ]; then
+      eval "$(echo "prplmnky_old_cd()"; declare -f cd | tail -n +2)"
+    else
+      prplmnky_old_cd() { builtin cd $@; }
     fi
-    
-    if [ $v -gt 0 ]; then
-      #echo "use regular cd"
-      #echo "orig $*"
-      builtin cd $*
-    fi
-  #else
-  #  echo 'zero status'
   fi
+
+  export -f prplmnky_old_cd
+
+  function cd() {
+    prplmnky_old_cd $* &>/dev/null
+    v="$?"
+    #echo "orig $*"
+    if [ $v -gt 0 ]; then
+      #echo 'non-zero status'
+      matches=($(find . -maxdepth 10 -name "${@:$#:1}" -type d 2>/dev/null))
+
+      #echo "found matches $matches"
+      #echo executing "cd ${@:0:$#-1} ${matches[0]}"
+      if [ -n "${matches[0]}" ]; then
+        prplmnky_old_cd ${@:1:$#-1} ${matches[0]} &>/dev/null
+        v="$?"
+      fi
+    
+      if [ $v -gt 0 ]; then
+        #echo "use regular cd"
+        #echo "orig $*"
+        prplmnky_old_cd $*
+      fi
+    #else
+    #  echo 'zero status'
+    fi
+  }
+
+  export -f cd
 }
+
+prplmnky_cd
+
+declare -f prplmnky_cd
+declare -f prplmnky_old_cd
+declare -f cd
