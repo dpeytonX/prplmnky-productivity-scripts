@@ -15,13 +15,13 @@ DIRNAME=$( cd "$( dirname "$Z" )" && pwd )
 MYVERSION=2
      
 cd $DIRNAME
-git stash |&>/dev/null
-git checkout master |&>/dev/null
-git fetch origin master |&>/dev/null
+git stash &>/dev/null
+git checkout master &>/dev/null
+git fetch origin master &>/dev/null
 
 fetch=$(git diff --name-only origin/master)
 if [ -n "$fetch" ]; then
-  git pull origin master |&>/dev/null
+  git pull origin master &>/dev/null
   . $(basename $Z) $MYVERSION
 else
   inSource
