@@ -6,18 +6,21 @@
 function cd {
   builtin cd $* &>/dev/null
   v="$?"
+  #echo "orig $*"
   if [ $v -gt 0 ]; then
     #echo 'non-zero status'
     matches=($(find . -maxdepth 10 -name "${@:$#:1}" -type d 2>/dev/null))
 
     #echo "found matches $matches"
     #echo executing "cd ${@:0:$#-1} ${matches[0]}"
-    builtin cd ${@:0:$#-1} ${matches[0]} &>/dev/null
-    v="$?"
+    if [ -n "${matches[0]}" ]; then
+      builtin cd ${@:1:$#-1} ${matches[0]} &>/dev/null
+      v="$?"
+    fi
     
-    if [[ $v -gt 0 || -z "${matches[0]}" ]]; then
-      #use regular cd
+    if [ $v -gt 0 ]; then
       #echo "use regular cd"
+      #echo "orig $*"
       builtin cd $*
     fi
   #else
