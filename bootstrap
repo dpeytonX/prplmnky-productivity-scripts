@@ -5,7 +5,7 @@ Z=${BASH_SOURCE[0]}
 ########################
 # Grab latest version  #
 ########################
-DIRNAME=$( cd "$( dirname "$Z" )" && pwd )
+DIRNAME=$( builtin cd "$( dirname "$Z" )" && pwd )
 MYVERSION=2
      
 cd $DIRNAME
