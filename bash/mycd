@@ -54,6 +54,6 @@ function prplmnky_cd {
 
 prplmnky_cd
 
-declare -f prplmnky_cd
-declare -f prplmnky_old_cd
-declare -f cd
+#declare -f prplmnky_cd
+#declare -f prplmnky_old_cd
+#declare -f cd
