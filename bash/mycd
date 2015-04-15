@@ -4,6 +4,7 @@
 #match occurs.
 
 function prplmnky_cd {
+  echo "$(declare -f prplmnky_old_cd)"
   if [ -z "$(declare -f prplmnky_old_cd)" ]; then
     echo "prplmnky_old_cd exists"
     declare -f prplmnky_old_cd

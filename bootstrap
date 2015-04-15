@@ -14,14 +14,14 @@ cd $DIRNAME
 #git fetch origin master &>/dev/null
 
 #fetch=$(git diff --name-only origin/master)
-if [ -n "$fetch" ]; then
-  git pull origin -f master &>/dev/null
-  . $(basename $Z) $MYVERSION
-else
+#if [ -n "$fetch" ]; then
+#  git pull origin -f master &>/dev/null
+#  . $(basename $Z) $MYVERSION
+#else
   . bash/setupaliases
   . bash/mycd
   export -f prplmnky_cd
   . git/setupgit
-fi
+#fi
 
 cd $OLDPWD
