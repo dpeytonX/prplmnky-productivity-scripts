@@ -8,14 +8,14 @@ Z=${BASH_SOURCE[0]}
 DIRNAME=$( builtin cd "$( dirname "$Z" )" && pwd )
 MYVERSION=2
      
-pushd $DIRNAME &>/dev/null
-git stash &>/dev/null
-git checkout master &>/dev/null
-git fetch origin master &>/dev/null
+pushd $DIRNAME >/dev/null 2>&1
+git stash >/dev/null 2>&1
+git checkout master >/dev/null 2>&1
+git fetch origin master >/dev/null 2>&1
 
 fetch="$(git diff --name-only origin/master)"
 if [ -n "$fetch" ]; then
-  git pull origin -f master &>/dev/null
+  git pull origin -f master >/dev/null 2>&1
   . $(basename $Z) $MYVERSION
 else
   . bash/setupaliases
@@ -24,5 +24,5 @@ else
   . git/setupgit
 fi
 
-popd $OLDPWD &>/dev/null
+popd $OLDPWD >/dev/null 2>&1
 
