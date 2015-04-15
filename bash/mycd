@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#overwrite cd so that it recusively search the directories below until a
+#match occurs.
+
+function cd {
+  builtin cd $* &>/dev/null
+  v="$?"
+  if [ $v -gt 0 ]; then
+    #echo 'non-zero status'
+    matches=($(find . -maxdepth 10 -name "${@:$#:1}" -type d 2>/dev/null))
+
+    #echo "found matches $matches"
+    #echo executing "cd ${@:0:$#-1} ${matches[0]}"
+    builtin cd ${@:0:$#-1} ${matches[0]} &>/dev/null
+    v="$?"
+    
+    if [[ $v -gt 0 || -z "${matches[0]}" ]]; then
+      #use regular cd
+      #echo "use regular cd"
+      builtin cd $*
+    fi
+  #else
+    #echo 'zero status'
+  fi
+}
