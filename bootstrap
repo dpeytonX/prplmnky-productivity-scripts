@@ -1,11 +1,5 @@
 #!/bin/bash
 
-function inSource() {
-  . bash/setupaliases
-  . bash/mycd
-  . git/setupgit
-}
-
 Z=${BASH_SOURCE[0]}
 
 ########################
@@ -24,7 +18,9 @@ if [ -n "$fetch" ]; then
   git pull origin master &>/dev/null
   . $(basename $Z) $MYVERSION
 else
-  inSource
+  . bash/setupaliases
+  . bash/mycd
+  . git/setupgit
 fi
 
 cd $OLDPWD
