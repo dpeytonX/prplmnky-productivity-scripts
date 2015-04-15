@@ -24,6 +24,6 @@ function cd {
       builtin cd $*
     fi
   #else
-    #echo 'zero status'
+  #  echo 'zero status'
   fi
 }
