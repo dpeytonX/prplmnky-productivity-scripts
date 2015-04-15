@@ -5,10 +5,16 @@
 
 function prplmnky_cd {
   if [ -z "$(declare -f prplmnky_old_cd)" ]; then
+    echo "prplmnky_old_cd exists"
+    declare -f prplmnky_old_cd
     if [ -n "$(declare -f cd)" ]; then
       eval "$(echo "prplmnky_old_cd()"; declare -f cd | tail -n +2)"
+    echo "prplmnky_old_cd did not exist, but old cd did"
+      declare -f prplmnky_old_cd
     else
       prplmnky_old_cd() { builtin cd $@; }
+    echo "prplmnky_old_cd did not exist"
+      declare -f prplmnky_old_cd
     fi
   fi
 
