@@ -27,6 +27,7 @@ git config --global alias.mb "branch -m"
 ###################
 git config --global alias.d "diff"
 git config --global alias.dH "diff HEAD^1"
+git config --global alias.cp "cherry-pick"
 
 ###################
 # Logging         #
