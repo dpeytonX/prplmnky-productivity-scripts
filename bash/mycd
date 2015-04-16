@@ -25,7 +25,7 @@ function prplmnky_cd {
   export -f prplmnky_old_cd
 
   function cd() {
-    prplmnky_old_cd $* &>/dev/null
+    prplmnky_old_cd $* > /dev/null 2>&1
     v="$?"
     #echo "orig $*"
     if [ $v -gt 0 ]; then
