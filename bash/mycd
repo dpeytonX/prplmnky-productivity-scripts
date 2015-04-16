@@ -30,7 +30,7 @@ function prplmnky_cd {
     #echo "orig $*"
     if [ $v -gt 0 ]; then
       #echo 'non-zero status'
-      matches=($(find . -maxdepth 10 -name "${@:$#:1}" -type d 2>/dev/null))
+      matches=($(find . -maxdepth 5 -name "${@:$#:1}" -type d 2>/dev/null))
 
       #echo "found matches $matches"
       #echo executing "cd ${@:0:$#-1} ${matches[0]}"
