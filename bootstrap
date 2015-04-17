@@ -6,7 +6,6 @@ Z=${BASH_SOURCE[0]}
 # Grab latest version  #
 ########################
 DIRNAME=$( builtin cd "$( dirname "$Z" )" && pwd )
-MYVERSION=2
      
 pushd $DIRNAME >/dev/null 2>&1
 git stash >/dev/null 2>&1
@@ -16,7 +15,7 @@ git fetch origin master >/dev/null 2>&1
 fetch="$(git diff --name-only origin/master)"
 if [ -n "$fetch" ]; then
   git pull origin -f master >/dev/null 2>&1
-  . $(basename $Z) $MYVERSION
+  . $0
 else
   . bash/setupaliases
   . bash/mycd
