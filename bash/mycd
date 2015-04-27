@@ -28,9 +28,16 @@ function prplmnky_cd {
     prplmnky_old_cd $* > /dev/null 2>&1
     v="$?"
     #echo "orig $*"
+
+    for i in $@; do
+      if [[ $i =~ ^-.*P.* ]]; then
+        local noFollowSym=1
+      fi
+    done
+
     if [ $v -gt 0 ]; then
       #echo 'non-zero status'
-      matches=($(find -L . -maxdepth 5 -name "${@:$#:1}" -type d 2>/dev/null))
+      matches=($(find ${noFollowSym:-"-L"} . -maxdepth 5 -name "${@:$#:1}" -type d 2>/dev/null));
 
       #echo "found matches $matches"
       #echo executing "cd ${@:0:$#-1} ${matches[0]}"
