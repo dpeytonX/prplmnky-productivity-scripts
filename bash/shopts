@@ -1,1 +1,2 @@
 shopt -s autocd cdspell
+shopt -s histverify
