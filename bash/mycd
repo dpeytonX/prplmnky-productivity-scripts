@@ -50,9 +50,11 @@ function prplmnky_cd {
         #echo "use regular cd"
         #echo "orig $*"
         prplmnky_old_cd $*
+      else
+        ls
       fi
-    #else
-    #  echo 'zero status'
+    else
+      ls
     fi
   }
 
