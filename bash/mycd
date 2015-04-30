@@ -29,13 +29,13 @@ function prplmnky_cd {
     v="$?"
     #echo "orig $*"
 
-    for i in $@; do
-      if [[ $i =~ ^-.*P.* ]]; then
-        local noFollowSym=1
-      fi
-    done
-
     if [ $v -gt 0 ]; then
+      for i in $@; do
+        if [[ $i =~ ^-.*P.* ]]; then
+          local noFollowSym=1
+        fi
+      done
+
       #echo 'non-zero status'
       matches=($(find ${noFollowSym:-"-L"} . -maxdepth 5 -name "${@:$#:1}" -type d 2>/dev/null));
 
