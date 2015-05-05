@@ -1,2 +1,3 @@
 shopt -s autocd cdspell
 shopt -s histverify
+shopt -s globstar
