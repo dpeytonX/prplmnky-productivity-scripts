@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#escalate to root for files
+
+function vim() {
+  params=$*
+  local vi_my_func_escalate=
+
+  until [[ $# = 0 ]]; do
+    #echo $1
+    if [[ -e "$1" && ! -O "$1" ]]; then
+      #echo "should escalate"
+      vi_my_func_escalate=1
+      break
+    fi
+    shift
+  done
+
+  if [ -n $vi_my_func_escalate ]; then
+    #echo escalate
+    sudo `which vim` $params
+  else 
+    #echo regular
+    command vim $params
+  fi
+}
+
+function vi() {
+  vim $*
+}

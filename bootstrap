@@ -20,7 +20,10 @@ else
   . bash/shopts
   . bash/setupaliases
   . bash/mycd
+  . bash/myvim
   export -f prplmnky_cd
+  export -f vim
+  export -f vi
   . git/setupgit
 fi
 
