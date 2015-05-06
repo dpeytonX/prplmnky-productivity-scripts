@@ -16,7 +16,7 @@ function vim() {
     shift
   done
 
-  if [ -n $vi_my_func_escalate ]; then
+  if [ -n "$vi_my_func_escalate" ]; then
     #echo escalate
     sudo `which vim` $params
   else 
