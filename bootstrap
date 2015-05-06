@@ -18,6 +18,7 @@ if [ -n "$fetch" ]; then
   . $0
 else
   . bash/shopts
+  . bash/setupenv
   . bash/setupaliases
   . bash/mycd
   . bash/myvim
