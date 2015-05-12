@@ -51,10 +51,10 @@ function prplmnky_cd {
         #echo "orig $*"
         prplmnky_old_cd $*
       else
-        ls -a
+        ls
       fi
     else
-      ls -a
+      ls
     fi
   }
 
