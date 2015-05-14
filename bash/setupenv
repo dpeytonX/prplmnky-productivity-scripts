@@ -1,4 +1,4 @@
 #!/bin/bash
 
 HOSTFILE=~/.hosts
-PROMPT_COMMAND=ls
+PROMPT_COMMAND="echo -e '\n\n********ls .*************'; ls; echo '*************************'"
