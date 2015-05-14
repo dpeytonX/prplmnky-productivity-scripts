@@ -1,3 +1,4 @@
 #!/bin/bash
 
 HOSTFILE=~/.hosts
+PROMPT_COMMAND=ls

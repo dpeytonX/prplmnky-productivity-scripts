@@ -25,7 +25,7 @@ function prplmnky_cd {
   export -f prplmnky_old_cd
 
   function cd() {
-    prplmnky_old_cd $* > /dev/null 2>&1
+    prplmnky_old_cd "$*" > /dev/null 2>&1
     v="$?"
     #echo "orig $*"
 
@@ -42,19 +42,19 @@ function prplmnky_cd {
       #echo "found matches $matches"
       #echo executing "cd ${@:0:$#-1} ${matches[0]}"
       if [ -n "${matches[0]}" ]; then
-        prplmnky_old_cd ${@:1:$#-1} ${matches[0]} &>/dev/null
+        prplmnky_old_cd "${@:1:$#-1}" "${matches[0]}" &>/dev/null
         v="$?"
       fi
     
       if [ $v -gt 0 ]; then
         #echo "use regular cd"
         #echo "orig $*"
-        prplmnky_old_cd $*
-      else
-        ls
+        prplmnky_old_cd "$*"
+      #else
+        #ls
       fi
-    else
-      ls
+    #else
+      #ls
     fi
   }
 
