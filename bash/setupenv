@@ -1,4 +1,8 @@
 #!/bin/bash
 
 HOSTFILE=~/.hosts
-PROMPT_COMMAND="echo -e '\n\n********ls .*************'; ls; echo '*************************'"
+function showls() {
+  echo -en '\n\n********ls .'; for i in $(seq $(( $COLUMNS - 12 )) ) ; do echo -n '*'; done; ls; for i in $(seq $COLUMNS) ; do echo -n '*'; done;
+}
+
+PROMPT_COMMAND="showls"
