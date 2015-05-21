@@ -6,3 +6,4 @@ function showls() {
 }
 
 PROMPT_COMMAND="showls"
+PS4="trace: "
