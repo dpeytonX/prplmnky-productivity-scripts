@@ -5,6 +5,15 @@ function showls() {
   echo -en '\n\n********ls .'; for i in $(seq $(( $COLUMNS - 12 )) ) ; do echo -n '*'; done; ls; for i in $(seq $COLUMNS) ; do echo -n '*'; done;
 }
 
-PROMPT_COMMAND="showls"
 PS4="trace: "
 declare -nx PC=PROMPT_COMMAND
+
+function togglepc() {
+  if [ -z $PROMPT_COMMAND ]; then
+    PROMPT_COMMAND="showls"
+  else
+    PROMPT_COMMAND=""
+  fi 
+}
+togglepc
+export togglepc

@@ -25,6 +25,7 @@ else
   export -f prplmnky_cd
   export -f vim
   export -f vi
+  export -f togglepc
   . git/setupgit
 fi
 
