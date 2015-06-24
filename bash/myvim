@@ -3,13 +3,12 @@
 #escalate to root for files
 
 function vim() {
-  params=$*
+  params=$@
   local vi_my_func_escalate=
 
   until [[ $# = 0 ]]; do
     #echo $1
     if [[ -e "$1" && ! -O "$1" ]]; then
-      #echo "should escalate"
       vi_my_func_escalate=1
       break
     fi
@@ -26,5 +25,5 @@ function vim() {
 }
 
 function vi() {
-  vim $*
+  vim $@
 }

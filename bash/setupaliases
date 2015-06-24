@@ -26,5 +26,5 @@ alias bapts="s apt-build update; s apt-build search"
 # Editor    #
 #############
 alias se="s -e"
-alias svim="s vim"
-alias VIM=svim
+alias v=vim
+alias sv="s v"
