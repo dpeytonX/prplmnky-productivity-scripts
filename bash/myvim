@@ -17,13 +17,13 @@ function vim() {
 
   if [ -n "$vi_my_func_escalate" ]; then
     #echo escalate
-    sudo `which vim` $params
+    sudo `which vim` "$params"
   else 
     #echo regular
-    command vim $params
+    command vim "$params"
   fi
 }
 
 function vi() {
-  vim $@
+  vim "$@"
 }
