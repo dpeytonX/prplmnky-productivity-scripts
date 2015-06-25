@@ -11,3 +11,5 @@ function toggle() {
     sudo service $1 start
   fi
 }
+
+export -f toggle
