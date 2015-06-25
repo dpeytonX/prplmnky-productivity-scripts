@@ -17,17 +17,13 @@ if [ -n "$fetch" ]; then
   git pull origin -f master >/dev/null 2>&1
   . $0
 else
-  . bash/shopts
-  . bash/setupenv
-  . bash/setupaliases
-  . bash/mycd
-  . bash/myvim
+  . bash/*
   export -f prplmnky_cd
   export -f vim
   export -f vi
   export -f togglepc
   export -f toggle
-  . git/setupgit
+  . git/*
 fi
 
 popd >/dev/null 2>&1
