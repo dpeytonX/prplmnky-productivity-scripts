@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# toggle service
+
+function toggle() {
+  if [ -z $1 ]; then echo 'Please provide a service.'; fi
+  
+  if [ -n "$(service $1 status | grep 'active (running)')" ]; then
+    sudo service $1 stop
+  else
+    sudo service $1 start
+  fi
+}

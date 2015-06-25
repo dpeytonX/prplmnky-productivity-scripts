@@ -26,6 +26,7 @@ else
   export -f vim
   export -f vi
   export -f togglepc
+  export -f toggle
   . git/setupgit
 fi
 
