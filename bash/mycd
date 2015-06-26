@@ -4,11 +4,20 @@
 #match occurs.
 
 function prplmnky_cd {
+  if [ -n "$(declare -f prplmnky_old_cd_builtin)" ]; then
+    unset -f prplmnky_old_cd;
+    if [ -n "$(declare -f prplmnky_old_cd_builtin)" ]; then
+      unset -f prplmnky_old_cd_builtin;
+      unset -f cd;
+    fi
+  fi
+
   if [ -z "$(declare -f prplmnky_old_cd)" ]; then
     if [ -n "$(declare -f cd)" ]; then
       eval "$(echo "prplmnky_old_cd()"; declare -f cd | tail -n +2)"
     else
-      prplmnky_old_cd() { builtin cd "$@"; }
+      function prplmnky_old_cd_builtin() { builtin cd "$@"; }
+      function prplmnky_old_cd() { prplmnky_old_cd_builtin "$@"; }
     fi
   fi
 
@@ -42,4 +51,7 @@ function prplmnky_cd {
 }
 
 prplmnky_cd
+export -f prplmnky_old_cd
+export -f cd
+export -f prplmnky_old_cd_builtin
 
