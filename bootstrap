@@ -24,6 +24,8 @@ else
   . bash/shopts*
   . bash/toggle*
   export -f prplmnky_cd
+  export -f cd
+  export -f prplmnky_old_cd
   export -f vim
   export -f vi
   export -f togglepc
