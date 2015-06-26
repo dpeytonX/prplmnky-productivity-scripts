@@ -5,7 +5,7 @@
 function toggle() {
   if [ -z $1 ]; then echo 'Please provide a service.'; return 1; fi
   
-  if [ -n "$(service $1 status | grep 'active (running)')" ]; then
+  if [ -n "$(service $1 status | grep 'active (running)')" -o -n "$(service $1 status | grep 'is running')" ]; then
     sudo service $1 stop
   else
     sudo service $1 start
