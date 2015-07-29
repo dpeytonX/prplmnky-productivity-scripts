@@ -4,6 +4,7 @@
 
 function vim () 
 { 
+    local params=$@
     local vi_my_func_escalate=;
     until [[ $# -eq 0 ]]; do
         if [[ -e "$1" && ! -O "$1" ]]; then
