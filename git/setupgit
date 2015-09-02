@@ -47,3 +47,7 @@ function gitpullmaster() {
   git co master --quiet
   git pull origin master:master -f
 }
+
+function gitcpmerge() {
+  git l --pretty=oneline origin/$1 | grep "$1:" | { readarray log; for i in `seq ${#log[@]} | sort -r`; do l=(${log[$i]}); git cp ${l[0]}; done; }
+}
