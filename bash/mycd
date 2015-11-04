@@ -17,7 +17,15 @@ function prplmnky_cd {
       eval "$(echo "prplmnky_old_cd()"; declare -f cd | tail -n +2)"
     else
       function prplmnky_old_cd_builtin() { builtin cd "$@"; }
-      function prplmnky_old_cd() { prplmnky_old_cd_builtin "$@"; }
+      function prplmnky_old_cd() { 
+        prplmnky_old_cd_builtin "$@";
+        status_code=$?
+        if [ $status_code -eq 0 ]; then
+          #TODO: this won't work with autocd shopt or ~. Investigate using TRAPS?
+          PS1="${PS1_ORIG%$ }$(__git_ps1)$ "
+        fi
+        return $status_code
+      }
     fi
   fi
 
