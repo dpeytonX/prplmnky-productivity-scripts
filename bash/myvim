@@ -4,7 +4,7 @@
 
 function vim () 
 { 
-    local params=$@
+    local params="$@"
     local vi_my_func_escalate=;
     until [[ $# -eq 0 ]]; do
         if [[ -e "$1" && ! -O "$1" ]]; then
@@ -14,9 +14,9 @@ function vim ()
         shift;
     done;
     if [ -n "$vi_my_func_escalate" ]; then
-        sudo `which vim` $params;
+        sudo `which vim` "$params";
     else
-        command vim $params;
+        command vim "$params";
     fi
 }
 
