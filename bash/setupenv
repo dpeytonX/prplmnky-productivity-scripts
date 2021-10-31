@@ -1,4 +1,5 @@
 #!/bin/bash
+[[ "$(uname -s)" == *CYGWIN* ]] && echo -en "\e[8;35;100t";
 
 HOSTFILE=~/.hosts
 function showls() {
