@@ -24,6 +24,7 @@ else
   . bash/shopts
   . bash/toggle
   . bash/silent
+  . bash/objects
   export -f prplmnky_cd
   export -f cd
   export -f prplmnky_old_cd
