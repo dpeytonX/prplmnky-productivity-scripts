@@ -33,6 +33,7 @@ else
   export -f togglepc
   export -f toggle
   export -f silent
+  export -f method
   . git/*
 fi
 
