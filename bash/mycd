@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #overwrite cd so that it recusively search the directories below until a
 #match occurs.

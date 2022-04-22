@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function method() {
+	[[ -z $1 || -z $2 ]] && return 1;
+	eval "$(echo "function __$1_${2}()"; declare -f $2 | tail -n +2)";
+	eval "$(echo $1[\"$2\"]=\"__$1_$2\")";
+	unset $2;
+	return 0;
+}
+
+alias class="declare -A"
